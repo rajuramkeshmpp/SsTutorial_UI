@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MainLayout from './layouts/MainLayout';
+import AdminLayout from './layouts/AdminLayout';
+
+import Home from './Home';
+import About from './About';
+
+import Register from './Register';
+import Login from './Login';
+import StudentLayout from './layouts/StudentLayout';
+import TeacherLayout from './layouts/TeacherLayout';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {/* Main Layout */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />         
+          <Route path="/register" element={<Register />} />          
+        </Route>
+
+        {/* Admin Layout */}
+        <Route path="/admin" element={<AdminLayout />}>
+          
+        </Route>
+
+         {/* Student Layout */}
+        <Route path="/student" element={<StudentLayout />}>
+         
+        </Route>
+         {/* Teacher Layout */}
+         <Route path="/teacher" element={<TeacherLayout />}>
+         
+         </Route>
+
+      </Routes>
+    </Router>
   );
 }
 
