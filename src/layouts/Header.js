@@ -19,9 +19,9 @@ return (
 <div className="header-right">
   <FaUserCircle className="icon user-icon" />
   {user && (
-  <span className="username">
-    {user.firstname} {user.lastname} ({role})
-  </span>
+ <span className="username">
+ {user.firstname} {user.lastname} ({role})
+</span>
 )}
 
   <FaSignOutAlt className="icon" onClick={handleLogout} title="Logout" />
