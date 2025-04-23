@@ -3,7 +3,7 @@ import '../App.css';
 import { FaSignOutAlt, FaCog, FaUserCircle } from 'react-icons/fa';
 import Header from './Header';
 import Footer from './Footer';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const AdminLayout = () => {
   return (
@@ -15,14 +15,13 @@ const AdminLayout = () => {
       <div className="dashboard-body">
         <aside className="sidebar">
           <ul>
-            <li>Assign Role</li>
-            <li>Student</li>
-            <li>Teacher</li>
+          <li><Link to="assignrole"  style={{ display: 'block',padding: '12px 20px',backgroundColor: '#34495e',color: '#fff',textDecoration: 'none',fontWeight: '500'
+           }}>Assign Role</Link></li>
           </ul>
         </aside>
 
         <main className="main-content">
-          <h2>Welcome to your Dashboard!</h2>
+          <h2></h2>
           <Outlet />
         </main>
       </div>

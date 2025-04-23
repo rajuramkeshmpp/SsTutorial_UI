@@ -9,6 +9,7 @@ import Register from './Register';
 import Login from './Login';
 import StudentLayout from './layouts/StudentLayout';
 import TeacherLayout from './layouts/TeacherLayout';
+import AssignRole from './layouts/AssignRole';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
 
         {/* Admin Layout */}
         <Route path="/admin" element={<AdminLayout />}>
-          
+          <Route path="assignrole" element={<AssignRole />} />
+         
         </Route>
 
          {/* Student Layout */}
