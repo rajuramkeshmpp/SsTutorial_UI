@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+const AssignRole = () => {
 
-function AssignRole = () => {
   const [email, setEmail] = useState('');
   const [role, setRole] = useState('');
 
