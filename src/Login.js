@@ -38,6 +38,10 @@ function Login() {
             {
               navigate('/teacher');
             }
+            if(res.data.role == 'HR')
+              {
+                navigate('/hr');
+              }
           }
           if(res.data.success == "400")
           {
