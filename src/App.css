@@ -322,8 +322,191 @@ header {
   font-size: 1.5em;
   font-weight: bold;
 }
+.sidebar-item {
+  list-style: none;
+  margin: 20px 0;
+}
 
+.sidebar-link {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 16px;
+  color: #ffffff;
+  background-color:#385c8e;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
+.sidebar-link:hover {
+  background-color: #388e3c;
+  transform: translateY(-2px);
+}
+
+.sidebar-link:active {
+  background-color: #2e7d32;
+}
+.styled-table {
+  border-collapse: collapse;
+  margin: 30px auto;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 90%;
+  max-width: 1200px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.styled-table thead tr {
+  background-color: #1f2937;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.styled-table tbody tr {
+  background-color: #ffffff;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f8f9fa;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #f0f4f8;
+}
+
+.edit-button {
+  padding: 8px 14px;
+  background-color: #4f46e5;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-button:hover {
+  background-color: #4338ca;
+}
+
+.add-task-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 20px;
+}
+
+.add-task-button {
+  padding: 10px 20px;
+  background-color: #10b981;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.add-task-button:hover {
+  background-color: #059669;
+}
+
+/* Modal styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.submit-button {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* Dynamic status styling */
+.status-cell {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  
+  .status-cell.done {
+    color: #2563eb; /* Blue */
+  }
+  
+  .status-cell.testing {
+    color: #dc2626; /* Red */
+  }
+  
+  .status-cell.inprogress {
+    color: #10b981; /* Green */
+  }
+  
+  .status-cell.todo {
+    color: #ced50f; /* Purple */
+  }
 
 
 

@@ -11,6 +11,8 @@ import StudentLayout from './layouts/StudentLayout';
 import TeacherLayout from './layouts/TeacherLayout';
 import AssignRole from './layouts/AssignRole';
 import HRLayout from './layouts/HRLayout';
+import TaskManager from './layouts/TaskManager';
+
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
         {/* Admin Layout */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="assignrole" element={<AssignRole />} />
+          <Route path="taskmanager" element={<TaskManager/>} />
          
         </Route>
 

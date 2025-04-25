@@ -1,20 +1,21 @@
 // src/components/SideBar.jsx
-import { FaUserCircle, FaUsers, FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom"; // Import Link
 import useAuthStore from "../store/useAuthStore";
-import { useEffect, useState } from "react";
+import { FaUserShield, FaTasks } from 'react-icons/fa';
+import '../App.css';
 
 const SideBar = () => {
   const role = useAuthStore((state) => state.role);
   return (
     <aside className="sidebar">
     <ul>
-
-
     {role === "Admin" && (
-    <li><Link to="assignrole"  style={{ display: 'block',padding: '12px 20px',backgroundColor: '#34495e',color: '#fff',textDecoration: 'none',fontWeight: '500'
-    }}>Assign Role</Link></li>
-        )}
+  <li className="sidebar-item">
+    <Link to="assignrole" className="sidebar-link"><FaUserShield /> Assign Role</Link>
+    <br/><br/>
+    <Link to="taskmanager" className="sidebar-link"><FaTasks /> Task Manager</Link>
+  </li>
+)}
 
     </ul>
 

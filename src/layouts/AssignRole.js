@@ -15,7 +15,7 @@ const AssignRole = () => {
       });   
   }, []);
   useEffect(() => {
-    axios.get('https://localhost:7160/api/Users/GetAllEmail')
+    axios.get('https://localhost:7160/api/Users/GetAllUsers')
       .then((res) => setUsers(res.data));
   }, []);
 
