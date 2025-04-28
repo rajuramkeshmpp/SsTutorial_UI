@@ -349,7 +349,7 @@ header {
 }
 .styled-table {
   border-collapse: collapse;
-  margin: 30px auto;
+  margin: auto;
   font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 90%;
@@ -367,7 +367,7 @@ header {
 
 .styled-table th,
 .styled-table td {
-  padding: 16px 20px;
+  padding: 10px 10px;
   border-bottom: 1px solid #e0e0e0;
 }
 
@@ -384,41 +384,8 @@ header {
   background-color: #f0f4f8;
 }
 
-.edit-button {
-  padding: 8px 14px;
-  background-color: #4f46e5;
-  border: none;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
 
-.edit-button:hover {
-  background-color: #4338ca;
-}
 
-.add-task-container {
-  display: flex;
-  justify-content: flex-end;
-  margin: 10px 20px;
-}
-
-.add-task-button {
-  padding: 10px 20px;
-  background-color: #10b981;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.add-task-button:hover {
-  background-color: #059669;
-}
 
 /* Modal styling */
 .modal-overlay {
@@ -507,6 +474,155 @@ header {
   .status-cell.todo {
     color: #ced50f; /* Purple */
   }
+/* Action icon  styling of taskmanagerList */
+.action-icons {
+  display: flex;
+  gap: 10px;
+ 
+}
 
+.icon {
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+.view-icon {
+  color: #007bff;
+}
+
+.edit-icon {
+  color: #ffc107;
+}
+
+.delete-icon {
+  color: #dc3545;
+}
+/* Styling for modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  text-align: left;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancel-button, .submit-button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.submit-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.view-icon {
+  color: #007BFF;
+}
+
+.edit-icon {
+  color: #FFC107;
+}
+
+.delete-icon {
+  color: #DC3545;
+}
+
+/* Table Styles */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.styled-table th, .styled-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.status-cell {
+  font-weight: bold;
+}
+.add-task-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Aligns everything to the right */
+  gap: 10px;/* Adds spacing between elements */
+}
+
+.search-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.search-input {
+  
+  padding: 8px;
+  font-size: 14px;
+  width: 300px; 
+
+}
+
+.user-icons-container {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-right: 720px;
+  
+}
+
+.user-icon {
+  width: 40px; /* Set width for the user image */
+  height: 40px; /* Set height for the user image */
+  border-radius: 50%; /* Makes the image oval */
+  object-fit: cover; /* Ensures the image fits within the container */
+  cursor: pointer;
+}
+
+.add-task-button {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-task-button:hover {
+  background-color: #45a049;
+}
 
 
