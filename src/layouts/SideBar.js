@@ -13,8 +13,12 @@ const SideBar = () => {
   <li className="sidebar-item">
     <Link to="assignrole" className="sidebar-link"><FaUserShield /> Assign Role</Link>
     <br/><br/>
+    <Link to="role" className="sidebar-link"><FaUserShield /> Role</Link>
+    <br/><br/>
     <Link to="taskmanager" className="sidebar-link"><FaTasks /> Task Manager</Link>
-  </li>
+    <br/><br/>
+    <Link to="country" className="sidebar-link"><FaTasks /> Country</Link>
+      </li>
 )}
 
     </ul>
