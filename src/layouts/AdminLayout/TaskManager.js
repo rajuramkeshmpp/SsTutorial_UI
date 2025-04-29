@@ -1,24 +1,26 @@
 import axios from 'axios';
 import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
-import '../App.css';
+import '../../App.css';
 
 const TaskManager = () => {
-  const [tasks, setTasks] = useState([]);
-  const [users, setUsers] = useState([]);
-  const [statuses, setStatuses] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [newTask, setNewTask] = useState({
+  const initialTaskState = {
     taskName: '',
     firstName: 'string',
     statusName: 'string',
     taskDescription: '',
     userId: '',
     statusId: ''
-  });
+  };
+
+  const [tasks, setTasks] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [statuses, setStatuses] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [newTask, setNewTask] = useState(initialTaskState);
   const [editingTaskId, setEditingTaskId] = useState(null);
-  const [selectedTask, setSelectedTask] = useState(null); // New state to track the selected task for viewing
-  const [searchQuery, setSearchQuery] = useState(''); // New state for search query
+  const [selectedTask, setSelectedTask] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     fetchTasks();
@@ -32,12 +34,14 @@ const TaskManager = () => {
 
   useEffect(() => {
     axios.get('https://localhost:7160/api/Status/GetAllStatus')
-      .then((res) => setStatuses(res.data));
+      .then((res) => setStatuses(res.data))
+      .catch((err) => console.error("Error fetching status list:", err));
   }, []);
 
   useEffect(() => {
     axios.get('https://localhost:7160/api/Users/GetAllUsers')
-      .then((res) => setUsers(res.data));
+      .then((res) => setUsers(res.data))
+      .catch((err) => console.error("Error fetching user list:", err));
   }, []);
 
   const handleInputChange = (e) => {
@@ -81,7 +85,7 @@ const TaskManager = () => {
   const resetForm = () => {
     setShowModal(false);
     setEditingTaskId(null);
-    setNewTask({ taskName: '', taskDescription: '', userId: '', statusId: '' });
+    setNewTask(initialTaskState);
   };
 
   const handleEditClick = (taskId) => {
@@ -92,7 +96,9 @@ const TaskManager = () => {
         taskName: taskToEdit.taskName,
         taskDescription: taskToEdit.taskDescription,
         userId: taskToEdit.userId,
-        statusId: taskToEdit.statusId
+        statusId: taskToEdit.statusId,
+        firstName: taskToEdit.firstName || '',
+        statusName: taskToEdit.statusName || ''
       });
       setShowModal(true);
     }
@@ -101,7 +107,7 @@ const TaskManager = () => {
   const getuserdata = (uid) => {
     axios.get(`https://localhost:7160/api/TaskManger/GetAllTaskListByUserId/${uid}`)
       .then((res) => setTasks(res.data))
-      .catch((err) => console.error("Error fetching task list:", err));
+      .catch((err) => console.error("Error fetching user-specific tasks:", err));
   };
 
   const handleDeleteTask = (taskId) => {
@@ -128,7 +134,6 @@ const TaskManager = () => {
   return (
     <div>
       <div className="add-task-container">
-        {/* Search Box on the Right */}
         <div className="search-container">
           <input
             type="text"
@@ -139,7 +144,6 @@ const TaskManager = () => {
           />
         </div>
 
-        {/* User Icons */}
         <div className="user-icons-container">
           {users.map((u) => (
             <img
@@ -152,8 +156,7 @@ const TaskManager = () => {
             />
           ))}
         </div>
-        
-        {/* Add Task Button */}
+
         <button className="add-task-button" onClick={() => setShowModal(true)}>+ Add Task</button>
       </div>
 
@@ -178,7 +181,7 @@ const TaskManager = () => {
                 <FaEye
                   className="icon view-icon"
                   title="View"
-                  onClick={() => setSelectedTask(task)} // Show the task details in modal
+                  onClick={() => setSelectedTask(task)}
                 />
                 <FaEdit
                   className="icon edit-icon"

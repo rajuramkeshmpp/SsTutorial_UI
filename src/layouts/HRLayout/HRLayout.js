@@ -1,10 +1,10 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import { FaSignOutAlt, FaCog, FaUserCircle } from 'react-icons/fa';
-import Header from './Header';
-import Footer from './Footer';
+import Header from '../Header';
+import Footer from '../Footer';
 import { Outlet } from 'react-router-dom';
-import SideBar from './SideBar';
+import SideBar from '../SideBar';
 
 const HRLayout = () => {
   return (
