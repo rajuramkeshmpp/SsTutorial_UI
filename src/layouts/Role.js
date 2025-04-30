@@ -3,17 +3,37 @@ import { useEffect, useState } from "react";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 
 const Role = () => {
-const [showModal, setShowModal] = useState(false);
-const [roles, setRoles]=useState([{'id':1,'name':'Admin'}]);
-useEffect(() => {
-    axios.get('https://localhost:7160/api/Role/GetAll')
-      .then((res) => setRoles(res.data));
+  const [showModal, setShowModal] = useState(false);
+  const [roles, setRoles] = useState([]);
+  const [name, setName] = useState("");
+
+  const addRole = () => {
+    axios.post("https://localhost:7160/api/Role/AddRole", { name })
+      .then((res) => {
+        getAllRoles();
+        setShowModal(false);
+        setName("");
+      })
+      .catch((err) => console.error("Error adding role:", err));
+  };
+
+  const getAllRoles = () => {
+    axios.get("https://localhost:7160/api/Role/GetAllRoles")
+      .then((res) => setRoles(res.data))
+      .catch((err) => console.error("Error fetching roles:", err));
+  };
+
+  useEffect(() => {
+    getAllRoles();
   }, []);
-    return (
-  <div>
-    <h1>Manage role</h1>
-    <button className="add-task-button" onClick={() => setShowModal(true)}>+ Add Role</button>
-    <table className="styled-table">
+
+  return (
+    <div>
+      <h1>Manage Roles</h1>
+      <button className="add-task-button" onClick={() => setShowModal(true)}>
+        + Add Role
+      </button>
+      <table className="styled-table">
         <thead>
           <tr>
             <th>ID</th>
@@ -27,24 +47,27 @@ useEffect(() => {
               <td>{r.id}</td>
               <td>{r.name}</td>
               <td className="action-icons">
-                <FaEye className="icon view-icon" title="View"/>
-                <FaEdit className="icon edit-icon" title="Edit"/>
-                <FaTrash className="icon delete-icon" title="Delete"/>
+                <FaEye className="icon view-icon" title="View" />
+                <FaEdit className="icon edit-icon" title="Edit" />
+                <FaTrash className="icon delete-icon" title="Delete" />
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">
             <h2>Add New Role</h2>
-            <form>
-              <label>Task Name</label>
+            <form onSubmit={(e) => { e.preventDefault(); addRole(); }}>
+              <label>Role Name</label>
               <input
                 type="text"
-                name="taskName"
-                placeholder="Enter task name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                name="roleName"
+                placeholder="Enter role name"
                 required
               />
               <div className="modal-buttons">
@@ -54,8 +77,8 @@ useEffect(() => {
           </div>
         </div>
       )}
-  </div>
- );
+    </div>
+  );
 };
 
 export default Role;
