@@ -1,12 +1,12 @@
 import React from 'react';
-import '../App.css';
+import '../../App.css';
 import { FaSignOutAlt, FaCog, FaUserCircle } from 'react-icons/fa';
-import Header from './Header';
-import Footer from './Footer';
-import SideBar from "./SideBar";
-import { Link, Outlet } from 'react-router-dom';
+import Header from '../Header';
+import Footer from '../Footer';
+import { Outlet } from 'react-router-dom';
+import SideBar from '../SideBar';
 
-const AdminLayout = () => {
+const TeacherLayout = () => {
   return (
     <div className="dashboard-container">
       <Header/>
@@ -22,4 +22,4 @@ const AdminLayout = () => {
   );
 };
 
-export default AdminLayout;
+export default TeacherLayout;
