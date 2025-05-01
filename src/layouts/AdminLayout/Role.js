@@ -4,7 +4,7 @@ import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 
 const Role = () => {
 const [showModal, setShowModal] = useState(false);
-const [roles, setRoles]=useState([{'id':1,'name':'Admin'}]);
+const [roles, setRoles]=useState([]);
 useEffect(() => {
     axios.get('https://localhost:7160/api/Role/GetAll')
       .then((res) => setRoles(res.data));

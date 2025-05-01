@@ -17,11 +17,11 @@ return (
 <div className="logo">Shiwansh Tutorial</div>
 
 <div className="header-right">
-  <FaUserCircle className="icon user-icon" />
   {user && (
- <span className="username">
- {user.firstname} {user.lastname} ({role})
-</span>
+<>
+<img src={`/${user.firstname}.jpg`} alt="User Icon" className="user-icon" style={{ width: '30px', height: '30px', cursor: 'pointer' }} />
+<span className="username">{user.firstname} {user.lastname} ({role})</span>
+</>
 )}
 
   <FaSignOutAlt className="icon" onClick={handleLogout} title="Logout" />
