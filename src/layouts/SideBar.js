@@ -4,7 +4,7 @@ import useAuthStore from "../store/useAuthStore";
 import { FaUserShield, FaTasks, FaGlobe, FaMapMarkedAlt, FaMap, FaUserTag } from 'react-icons/fa';
 import '../App.css';
 
-const SideBar = () => {
+function SideBar  ()  {
   const role = useAuthStore((state) => state.role);
   return (
     <aside className="sidebar">

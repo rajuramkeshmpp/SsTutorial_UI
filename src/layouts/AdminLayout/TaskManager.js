@@ -3,7 +3,7 @@ import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
 import React, { useEffect, useState } from 'react';
 import '../../App.css';
 
-const TaskManager = () => {
+function TaskManager  () {
   const initialTaskState = {
     taskName: '',
     firstName: 'string',

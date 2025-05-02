@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 
-const District = () => {
+function District () {
    const [states, setStates] = useState([]);
    const [countries, setCountries] = useState([]);
    const [districts, setDistricts] = useState([]);

@@ -160,16 +160,7 @@ const State = () => {
           <div className="modal-content">
             <h2>{editingId ? "Edit State" : "Add New State"}</h2>
             <form onSubmit={handleSubmit}>
-              <label>State Name</label>
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Enter state name"
-                required
-              />
-
-              <label>Select Country</label>
+             <label>Select Country</label>
               <select
                 value={countryId}
                 onChange={(e) => setCountryId(e.target.value)}
@@ -184,12 +175,20 @@ const State = () => {
                   </option>
                 ))}
               </select>
+              <label>State Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Enter state name"
+                required
+              />
 
               <div className="modal-buttons">
-                <button type="submit">
+                <button type="submit" className="submit-button">
                   {editingId ? "Update State" : "Add State"}
                 </button>
-                <button type="button" onClick={resetForm}>
+                <button type="button" onClick={resetForm} className="cancel-button">
                   Cancel
                 </button>
               </div>
