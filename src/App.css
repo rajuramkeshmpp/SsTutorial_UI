@@ -684,6 +684,21 @@ header {
 .add-country-button:hover {
   background-color: #218838;
 }
+.add-district-button {
+  background-color: #28a745; /* Bootstrap green */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.add-district-button:hover {
+  background-color: #218838;
+}
 
 
 

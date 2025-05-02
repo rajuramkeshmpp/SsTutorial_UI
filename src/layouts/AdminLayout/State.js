@@ -43,7 +43,7 @@ const State = () => {
 
     const stateData = {
       name,
-      countryId: parseInt(countryId),
+      countryId: parseInt(countryId), // Ensure the countryId is an integer
     };
 
     if (editingId) {
@@ -81,6 +81,36 @@ const State = () => {
     setViewState(null); // Reset view state when modal is closed
   };
 
+  const handleDelete = (stateId) => {
+    if (window.confirm("Are you sure you want to delete this state?")) {
+      axios
+        .delete(`https://localhost:7160/api/State/DeleteState/${stateId}`)
+        .then(() => {
+          console.log("State deleted successfully.");
+          GetAllState(); // Refresh the table after deletion
+        })
+        .catch((err) => {
+          console.error("Error deleting state:", err);
+        });
+    }
+  };
+
+  const handleEdit = (state) => {
+    setName(state.name);
+    setCountryId(countries.find((c) => c.name === state.countryName)?.id || "");
+    setEditingId(state.id);
+    setShowModal(true);
+  };
+
+  const handleView = (state) => {
+    setViewState(state); // Set the state to be viewed
+    setShowModal(true); // Open the modal
+  };
+
+  const isFormValid = () => {
+    return name.trim() !== "" && countryId !== "";
+  };
+
   return (
     <div>
       <button className="add-country-button" onClick={() => setShowModal(true)}>
@@ -91,8 +121,8 @@ const State = () => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>CountryName</th>
-            <th>StateName</th>
+            <th>Country Name</th>
+            <th>State Name</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -106,37 +136,17 @@ const State = () => {
                 <FaEdit
                   className="icon edit-icon"
                   title="Edit"
-                  onClick={() => {
-                    setName(s.name);
-                    setCountryId(countries.find((c) => c.name === s.countryName)?.id || "");
-                    setEditingId(s.id);
-                    setShowModal(true);
-                  }}
+                  onClick={() => handleEdit(s)}
                 />
                 <FaEye
                   className="icon view-icon"
                   title="View"
-                  onClick={() => {
-                    setViewState(s); // Set the state to be viewed
-                    setShowModal(true); // Open the modal
-                  }}
+                  onClick={() => handleView(s)}
                 />
                 <FaTrash
                   className="icon delete-icon"
                   title="Delete"
-                  onClick={() => {
-                    if (window.confirm("Are you sure you want to delete this state?")) {
-                      axios
-                        .delete(`https://localhost:7160/api/State/DeleteState/${s.id}`)
-                        .then(() => {
-                          console.log("State deleted successfully.");
-                          GetAllState(); // Refresh the table
-                        })
-                        .catch((err) => {
-                          console.error("Error deleting state:", err);
-                        });
-                    }
-                  }}
+                  onClick={() => handleDelete(s.id)}
                 />
               </td>
             </tr>
@@ -186,7 +196,7 @@ const State = () => {
               </select>
 
               <div className="modal-buttons">
-                <button type="submit">
+                <button type="submit" disabled={!isFormValid()}>
                   {editingId ? "Update State" : "Add State"}
                 </button>
                 <button type="button" onClick={resetForm}>
