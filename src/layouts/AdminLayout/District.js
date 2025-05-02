@@ -195,31 +195,7 @@ const District = () => {
             ) : (
               // Add/Edit Form
               <form onSubmit={handleSubmit}>
-                <label>District Name</label>
-                <input
-                  type="text"
-                  value={districtName}
-                  onChange={(e) => setDistrictName(e.target.value)}
-                  placeholder="Enter district name"
-                  required
-                  readOnly={!!viewDistrict} // Disable editing in view mode
-                />
-
-                <label>Select State</label>
-                <select
-                  value={stateId}
-                  onChange={(e) => setStateId(e.target.value)}
-                  required
-                  disabled={!!viewDistrict} // Disable select in view mode
-                >
-                  <option value="" disabled>-- Select State --</option>
-                  {states.map((s) => (
-                    <option key={s.id} value={s.id.toString()}>
-                      {s.name}
-                    </option>
-                  ))}
-                </select>
-
+                
                 <label>Select Country</label>
                 <select
                   value={countryId}
@@ -238,8 +214,31 @@ const District = () => {
                     ))
                   )}
                 </select>
+                <label>Select State</label>
+                <select
+                  value={stateId}
+                  onChange={(e) => setStateId(e.target.value)}
+                  required
+                  disabled={!!viewDistrict} // Disable select in view mode
+                >
+                  <option value="" disabled>-- Select State --</option>
+                  {states.map((s) => (
+                    <option key={s.id} value={s.id.toString()}>
+                      {s.name}
+                    </option>
+                  ))}
+                </select>
+                <label>District Name</label>
+                <input
+                  type="text"
+                  value={districtName}
+                  onChange={(e) => setDistrictName(e.target.value)}
+                  placeholder="Enter district name"
+                  required
+                  readOnly={!!viewDistrict} // Disable editing in view mode
+                />
 
-                <div className="modal-buttons">
+                 <div className="modal-buttons">
                   {!viewDistrict && (
                     <button type="submit" disabled={!isFormValid()}>
                       {editingId ? "Update District" : "Add District"}
