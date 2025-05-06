@@ -22,6 +22,8 @@ const SideBar = () => {
     <Link to="state" className="sidebar-link"><FaMapMarkedAlt /> State</Link>
     <br /><br />
     <Link to="district" className="sidebar-link"><FaMap /> District</Link>
+    <br /><br />
+    <Link to="currency" className="sidebar-link"><FaMap /> Currency</Link>
   </li>
 )}
 

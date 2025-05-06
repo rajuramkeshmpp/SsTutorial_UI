@@ -17,6 +17,7 @@ import Country from './layouts/AdminLayout/Country';
 import District from './layouts/AdminLayout/District';
 import State from './layouts/AdminLayout/State';
 import Role from './layouts/AdminLayout/Role';
+import Currency from './layouts/AdminLayout/Currency';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
           <Route path="country" element={<Country/>} />
           <Route path="district" element={<District/>} />
           <Route path="state" element={<State/>} />
+          <Route path="currency" element={<Currency/>} />
           
          
         </Route>
