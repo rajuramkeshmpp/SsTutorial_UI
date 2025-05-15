@@ -44,12 +44,13 @@ function Login() {
     axios
       .post('https://localhost:7160/api/Users/Login', { email, password })
       .then((res) => {
+        debugger;
         if (res.data.success === "200") {
           tokendata(res.data.token);
           userdata(res.data.user);
           roledata(res.data.role);
 
-          switch (res.data.role) {
+          switch (res.data.role.name) {
             case 'Student': navigate('/student'); break;
             case 'Admin': navigate('/admin'); break;
             case 'Teacher': navigate('/teacher'); break;
